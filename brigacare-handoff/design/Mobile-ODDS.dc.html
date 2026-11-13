@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ODDS Client Referral Form (mobile)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&amp;family=Nunito+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B7A37}a:hover{color:#075C29}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px;box-sizing:border-box}
+.nav{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.hero{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.staff{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.card{transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:0 10px 30px rgba(10,56,35,.10);transform:translateY(-2px)}
+.navlink{color:#17251C;text-decoration:none;font-weight:700;font-size:15px;padding:10px 0}
+.navlink:hover{color:#0B7A37}
+.flink{color:#E4EFE6;text-decoration:none}
+.flink:hover{color:#B5E07A}
+@media (max-width:900px){
+.hero,.split,.foot{grid-template-columns:1fr}
+.facts,.steps{grid-template-columns:1fr}
+.nav{gap:14px}
+}
+.fsec{background:#FFFFFF;border:1px solid #ECE6D3;border-radius:22px;overflow:hidden}
+.fsec summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:28px 44px;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;color:#0A3823}
+.fsec summary::-webkit-details-marker{display:none}
+.fsec .num{width:34px;height:34px;border-radius:50%;background:#E6F2DA;color:#2F5F14;display:flex;align-items:center;justify-content:center;font-family:'Nunito Sans',sans-serif;font-size:15px;font-weight:800;flex:none}
+.fsec .chev{margin-left:auto;color:#5A6960;transition:transform .2s}
+.fsec[open] .chev{transform:rotate(180deg)}
+.fbody{border-top:1px solid #F0EBDB;padding:36px 44px 44px;display:flex;flex-direction:column;gap:34px}
+.fld{display:flex;flex-direction:column;gap:12px;border:0;margin:0;padding:0;min-width:0}
+.lbl{font-weight:800;font-size:15px;color:#17251C;padding:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.req{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#B03A2E}
+.req::before{content:"\2022";margin-right:6px}
+.help{font-size:13.5px;color:#5A6960;line-height:1.55}
+.in{font:inherit;font-size:15px;color:#17251C;background:#FDFCF8;border:1.5px solid #D9D3C0;border-radius:12px;height:52px;padding:0 16px;box-sizing:border-box;width:100%}
+.in::placeholder{color:#7A877F}
+.in:focus,.in:focus-visible{outline:none;border-color:#0B7A37;box-shadow:0 0 0 4px rgba(11,122,55,.15);background-color:#FFFFFF}
+select.in{-webkit-appearance:none;-moz-appearance:none;appearance:none;padding-right:44px;cursor:pointer;background-color:#FDFCF8;background-image:linear-gradient(45deg,transparent 50%,#5A6960 50%),linear-gradient(135deg,#5A6960 50%,transparent 50%);background-position:calc(100% - 22px) 52%,calc(100% - 16px) 52%;background-size:6px 6px,6px 6px;background-repeat:no-repeat}
+select.in:invalid,select.in option[value=""]{color:#7A877F}
+select.in option{color:#17251C;background:#FFFFFF}
+input.in::-webkit-calendar-picker-indicator{opacity:.6;cursor:pointer}
+input.in::-webkit-calendar-picker-indicator:hover{opacity:1}
+.fsec summary:focus{outline:none}
+.fsec summary:focus-visible{outline:none;box-shadow:inset 0 0 0 3px rgba(11,122,55,.35);border-radius:22px}
+button:focus{outline:none}
+button:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(11,122,55,.25)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:34px 28px}
+.g3{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px}
+.g2 > .fld{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:12px;align-items:end}
+.g2 > .fld > .in{align-self:start}
+.g2 > .fld > .help{align-self:start}
+.tog{display:flex;align-items:center;gap:14px;cursor:pointer;min-height:44px}
+.tog input{position:absolute;opacity:0;width:1px;height:1px}
+.track{width:52px;height:30px;border-radius:999px;background:#D9D3C0;position:relative;transition:background .2s;flex:none}
+.track::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:left .2s}
+.tog input:checked + .track{background:#0B7A37}
+.tog input:checked + .track::after{left:25px}
+.tog input:focus-visible + .track{box-shadow:0 0 0 4px rgba(11,122,55,.25)}
+.drop{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;padding:26px;border:1.5px dashed #B9C9B0;border-radius:14px;background:#F7FAF2;color:#2F5F14;cursor:pointer;font-size:15px}
+.drop:hover{background:#EEF5E4}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative;cursor:pointer}
+.chip input{position:absolute;opacity:0;width:1px;height:1px}
+.chip span{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:1.5px solid #D9D3C0;border-radius:999px;background:#FDFCF8;font-weight:700;font-size:15px;color:#17251C;box-sizing:border-box}
+.chip span::before{content:"";width:16px;height:16px;border-radius:5px;border:1.5px solid #9AA59E;background:#FFFFFF;box-sizing:border-box}
+.chip input:checked + span{background:#E6F2DA;border-color:#0B7A37;color:#0A3823}
+.chip input:checked + span::before{background:#0B7A37;border-color:#0B7A37;box-shadow:inset 0 0 0 3px #FFFFFF}
+.chip input:focus-visible + span{box-shadow:0 0 0 4px rgba(11,122,55,.2)}
+@media (max-width:700px){.g2 > .fld{grid-row:auto;display:flex}.g2,.g3{grid-template-columns:1fr}.fbody{padding:24px 20px 28px;gap:28px}.fsec summary{padding:20px;font-size:20px}}
+.wrap{max-width:none;padding:0 16px}
+.g2,.g3,.g2n{grid-template-columns:1fr !important}
+.g2 > .fld{grid-row:auto !important;display:flex !important}
+.fbody{padding:22px 18px 26px !important;gap:26px !important}
+.fsec summary{padding:18px !important;font-size:19px !important;gap:10px !important}
+.fsec{border-radius:18px}
+</style>
+</helmet>
+<div style="width: 390px; font-family: 'Nunito Sans', system-ui, sans-serif; color: #17251C; background: #FBFAF3">
+
+<div style="background: #0A3823; color: #E4EFE6; font-size: 12px; font-weight: 700; text-align: center; padding: 8px 16px">Brigacare Behavior Professional Services Group</div>
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #ECE6D3; background: #FBFAF3">
+<a href="Mobile-Home.dc.html" aria-label="BrigaCare home"><img src="/_blob/763752d33b6f0afa741a15de9850ad5a" alt="BrigaCare" style="height: 36px; display: block"></a>
+<a href="Mobile-Menu.dc.html" aria-label="Open menu" style="width: 44px; height: 44px; border-radius: 12px; background: #0A3823; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</a>
+</header>
+
+<!-- Page title -->
+<section style="padding: 32px 0 24px">
+<div class="wrap" style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+<h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 34px; line-height: 1.1; color: #0A3823">ODDS Client Referral Form</h1>
+<span style="display: inline-flex; align-items: center; gap: 8px; background: #E6F2DA; color: #2F5F14; font-weight: 800; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; padding: 8px 14px; border-radius: 999px">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+HIPAA Secure</span>
+</div>
+</section>
+
+<!-- Form -->
+<section style="padding: 0 0 48px">
+<div class="wrap">
+<form style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px">
+
+<details open class="fsec">
+<summary><span class="num">1</span>Client Demographic Data<svg class="chev" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary>
+<div class="fbody">
+<fieldset class="fld">
+<legend class="lbl">Client Full Name <span class="req">Required</span></legend>
+<span class="help">Client Name - please use correct entry field!</span>
+<div class="g2">
+<input class="in" type="text" placeholder="First name" aria-label="Client first name">
+<input class="in" type="text" placeholder="Last name" aria-label="Client last name">
+</div>
+</fieldset>
+<div class="g2">
+<label class="fld"><span class="lbl">Client DOB <span class="req">Required</span></span><input class="in" type="date" aria-describedby="dob-help"><span class="help" id="dob-help">DOB</span></label>
+<label class="fld"><span class="lbl">DDS or APD? <span class="req">Required</span></span><select class="in" required><option value="" selected disabled>Select option</option><option>DDS</option><option>APD</option></select></label>
+</div>
+<div class="g2">
+<label class="fld"><span class="lbl">PRIME <span class="req">Required</span></span><input class="in" type="text" placeholder="Write here..."></label>
+<label class="fld"><span class="lbl">Gender Pref <span class="req">Required</span></span><select class="in" required><option value="" selected disabled>Select option</option><option>Female</option><option>Male</option><option>Non-binary</option><option>Prefer not to answer</option></select></label>
+</div>
+<fieldset class="fld">
+<legend class="lbl">Client Address <span class="req">Required</span></legend>
+<span class="help">Please use each entry box for the part of the address identified!</span>
+<input class="in" type="text" placeholder="Street" aria-label="Street">
+<input class="in" type="text" placeholder="Suite / Apt / Bldg (optional)" aria-label="Suite, apartment or building">
+<div class="g3">
+<input class="in" type="text" placeholder="City" aria-label="City">
+<input class="in" type="text" placeholder="State / Region" aria-label="State or region">
+<input class="in" type="text" placeholder="Postal Code" aria-label="Postal code">
+</div>
+<input class="in" type="text" list="countries" placeholder="Country (type to search)" aria-label="Country" autocomplete="country-name"><datalist id="countries"><option value="United States"></option><option value="Afghanistan"></option><option value="Åland Islands"></option><option value="Albania"></option><option value="Algeria"></option><option value="American Samoa"></option><option value="Andorra"></option><option value="Angola"></option><option value="Anguilla"></option><option value="Antarctica"></option><option value="Antigua and Barbuda"></option><option value="Argentina"></option><option value="Armenia"></option><option value="Aruba"></option><option value="Australia"></option><option value="Austria"></option><option value="Azerbaijan"></option><option value="Bahamas"></option><option value="Bahrain"></option><option value="Bangladesh"></option><option value="Barbados"></option><option value="Belarus"></option><option value="Belgium"></option><option value="Belize"></option><option value="Benin"></option><option value="Bermuda"></option><option value="Bhutan"></option><option value="Bolivia"></option><option value="Bonaire, Sint Eustatius and Saba"></option><option value="Bosnia and Herzegovina"></option><option value="Botswana"></option><option value="Bouvet Island"></option><option value="Brazil"></option><option value="British Indian Ocean Territory"></option><option value="Brunei Darussalam"></option><option value="Bulgaria"></option><option value="Burkina Faso"></option><option value="Burundi"></option><option value="Cabo Verde"></option><option value="Cambodia"></option><option value="Cameroon"></option><option value="Canada"></option><option value="Cayman Islands"></option><option value="Central African Republic"></option><option value="Chad"></option><option value="Chile"></option><option value="China"></option><option value="Christmas Island"></option><option value="Cocos (Keeling) Islands"></option><option value="Colombia"></option><option value="Comoros"></option><option value="Congo"></option><option value="Congo, The Democratic Republic of the"></option><option value="Cook Islands"></option><option value="Costa Rica"></option><option value="Croatia"></option><option value="Cuba"></option><option value="Curaçao"></option><option value="Cyprus"></option><option value="Czechia"></option><option value="Côte d&#x27;Ivoire"></option><option value="Denmark"></option><option value="Djibouti"></option><option value="Dominica"></option><option value="Dominican Republic"></option><option value="Ecuador"></option><option value="Egypt"></option><option value="El Salvador"></option><option value="Equatorial Guinea"></option><option value="Eritrea"></option><option value="Estonia"></option><option value="Eswatini"></option><option value="Ethiopia"></option><option value="Falkland Islands (Malvinas)"></option><option value="Faroe Islands"></option><option value="Fiji"></option><option value="Finland"></option><option value="France"></option><option value="French Guiana"></option><option value="French Polynesia"></option><option value="French Southern Territories"></option><option value="Gabon"></option><option value="Gambia"></option><option value="Georgia"></option><option value="Germany"></option><option value="Ghana"></option><option value="Gibraltar"></option><option value="Greece"></option><option value="Greenland"></option><option value="Grenada"></option><option value="Guadeloupe"></option><option value="Guam"></option><option value="Guatemala"></option><option value="Guernsey"></option><option value="Guinea"></option><option value="Guinea-Bissau"></option><option value="Guyana"></option><option value="Haiti"></option><option value="Heard Island and McDonald Islands"></option><option value="Holy See (Vatican City State)"></option><option value="Honduras"></option><option value="Hong Kong"></option><option value="Hungary"></option><option value="Iceland"></option><option value="India"></option><option value="Indonesia"></option><option value="Iran"></option><option value="Iraq"></option><option value="Ireland"></option><option value="Isle of Man"></option><option value="Israel"></option><option value="Italy"></option><option value="Jamaica"></option><option value="Japan"></option><option value="Jersey"></option><option value="Jordan"></option><option value="Kazakhstan"></option><option value="Kenya"></option><option value="Kiribati"></option><option value="Kuwait"></option><option value="Kyrgyzstan"></option><option value="Laos"></option><option value="Latvia"></option><option value="Lebanon"></option><option value="Lesotho"></option><option value="Liberia"></option><option value="Libya"></option><option value="Liechtenstein"></option><option value="Lithuania"></option><option value="Luxembourg"></option><option value="Macao"></option><option value="Madagascar"></option><option value="Malawi"></option><option value="Malaysia"></option><option value="Maldives"></option><option value="Mali"></option><option value="Malta"></option><option value="Marshall Islands"></option><option value="Martinique"></option><option value="Mauritania"></option><option value="Mauritius"></option><option value="Mayotte"></option><option value="Mexico"></option><option value="Micronesia, Federated States of"></option><option value="Moldova"></option><option value="Monaco"></option><option value="Mongolia"></option><option value="Montenegro"></option><option value="Montserrat"></option><option value="Morocco"></option><option value="Mozambique"></option><option value="Myanmar"></option><option value="Namibia"></option><option value="Nauru"></option><option value="Nepal"></option><option value="Netherlands"></option><option value="New Caledonia"></option><option value="New Zealand"></option><option value="Nicaragua"></option><option value="Niger"></option><option value="Nigeria"></option><option value="Niue"></option><option value="Norfolk Island"></option><option value="North Korea"></option><option value="North Macedonia"></option><option value="Northern Mariana Islands"></option><option value="Norway"></option><option value="Oman"></option><option value="Pakistan"></option><option value="Palau"></option><option value="Palestine, State of"></option><option value="Panama"></option><option value="Papua New Guinea"></option><option value="Paraguay"></option><option value="Peru"></option><option value="Philippines"></option><option value="Pitcairn"></option><option value="Poland"></option><option value="Portugal"></option><option value="Puerto Rico"></option><option value="Qatar"></option><option value="Romania"></option><option value="Russian Federation"></option><option value="Rwanda"></option><option value="Réunion"></option><option value="Saint Barthélemy"></option><option value="Saint Helena, Ascension and Tristan da Cunha"></option><option value="Saint Kitts and Nevis"></option><option value="Saint Lucia"></option><option value="Saint Martin (French part)"></option><option value="Saint Pierre and Miquelon"></option><option value="Saint Vincent and the Grenadines"></option><option value="Samoa"></option><option value="San Marino"></option><option value="Sao Tome and Principe"></option><option value="Saudi Arabia"></option><option value="Senegal"></option><option value="Serbia"></option><option value="Seychelles"></option><option value="Sierra Leone"></option><option value="Singapore"></option><option value="Sint Maarten (Dutch part)"></option><option value="Slovakia"></option><option value="Slovenia"></option><option value="Solomon Islands"></option><option value="Somalia"></option><option value="South Africa"></option><option value="South Georgia and the South Sandwich Islands"></option><option value="South Korea"></option><option value="South Sudan"></option><option value="Spain"></option><option value="Sri Lanka"></option><option value="Sudan"></option><option value="Suriname"></option><option value="Svalbard and Jan Mayen"></option><option value="Sweden"></option><option value="Switzerland"></option><option value="Syria"></option><option value="Taiwan"></option><option value="Tajikistan"></option><option value="Tanzania"></option><option value="Thailand"></option><option value="Timor-Leste"></option><option value="Togo"></option><option value="Tokelau"></option><option value="Tonga"></option><option value="Trinidad and Tobago"></option><option value="Tunisia"></option><option value="Turkmenistan"></option><option value="Turks and Caicos Islands"></option><option value="Tuvalu"></option><option value="Türkiye"></option><option value="Uganda"></option><option value="Ukraine"></option><option value="United Arab Emirates"></option><option value="United Kingdom"></option><option value="United States Minor Outlying Islands"></option><option value="Uruguay"></option><option value="Uzbekistan"></option><option value="Vanuatu"></option><option value="Venezuela"></option><option value="Vietnam"></option><option value="Virgin Islands, British"></option><option value="Virgin Islands, U.S."></option><option value="Wallis and Futuna"></option><option value="Western Sahara"></option><option value="Yemen"></option><option value="Zambia"></option><option value="Zimbabwe"></option></datalist>
+</fieldset>
+<div class="g2">
+<label class="fld"><span class="lbl">Client Personal Email</span><input class="in" type="email" placeholder="Enter email"><span class="help">Client personal email - NOT COMMON!</span></label>
+<label class="fld"><span class="lbl">Client Personal Phone</span><input class="in" type="tel" placeholder="Enter phone number"><span class="help">Client personal phone - NOT COMMON!</span></label>
+</div>
+</div>
+</details>
+
+<details open class="fsec">
+<summary><span class="num">2</span>Guardian Information<svg class="chev" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary>
+<div class="fbody">
+<label class="tog"><input type="checkbox"><span class="track" aria-hidden="true"></span><span class="lbl">Has Guardian Yes / No?</span></label>
+</div>
+</details>
+
+<details open class="fsec">
+<summary><span class="num">3</span>Residential Information<svg class="chev" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary>
+<div class="fbody">
+<label class="tog"><input type="checkbox"><span class="track" aria-hidden="true"></span><span class="lbl">Residential Program Yes / No?</span></label>
+</div>
+</details>
+
+<details open class="fsec">
+<summary><span class="num">4</span>Job Information<svg class="chev" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary>
+<div class="fbody">
+<div class="g2">
+<label class="fld"><span class="lbl">Preferred Behavior Professional</span><input class="in" type="text" placeholder="Write here..."></label>
+<label class="fld"><span class="lbl">ISPP End Date from ISP Document submitted <span class="req">Required</span></span><input class="in" type="date"><span class="help">Enter the ISP End Date <strong><em>from the ISP document being submitted</em></strong>. This can be more than 1 year from now.</span></label>
+</div>
+<label class="fld"><span class="lbl">Link: SC/PA, Case Mgr <span class="req">Required</span></span><a href="CaseMgr-Picker.dc.html" class="in" aria-haspopup="dialog" style="text-decoration: none; display: flex; align-items: center; gap: 10px; text-align: left; cursor: pointer; color: #5A6960"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span style="flex: 1">Find an existing SC/PA or Case Manager</span><span style="font-weight: 800; color: #0B7A37">Browse</span></a><span class="help">SELECT --001 I'm Not Listed()-- if you are not in our database</span></label>
+<fieldset class="fld"><legend class="lbl">Jobs Requested <span class="req">Required</span></legend><span class="help">Select all that apply.</span><div class="chips"><label class="chip"><input type="checkbox" name="jobs" value="FBA"><span>FBA</span></label><label class="chip"><input type="checkbox" name="jobs" value="PBSP"><span>PBSP</span></label><label class="chip"><input type="checkbox" name="jobs" value="TESP"><span>TESP</span></label><label class="chip"><input type="checkbox" name="jobs" value="Maintenance"><span>Maintenance</span></label><label class="chip"><input type="checkbox" name="jobs" value="APD Client"><span>APD Client</span></label></div></fieldset>
+<div class="fld">
+<span class="lbl">Uploaded Docs and Clinical Docs</span>
+<label class="drop"><input type="file" multiple style="position: absolute; width: 1px; height: 1px; opacity: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"></path><path d="m6 10 6-6 6 6"></path><path d="M4 20h16"></path></svg><span><strong>Add attachment</strong> or drag files here</span></label>
+</div>
+<label class="fld"><span class="lbl">Bill to (Bullpen) <span class="req">Required</span></span><select class="in" required><option value="" selected disabled>Select option</option><option>DDS Medicaid - eXPRS</option><option>APD Medicaid</option><option>Residence/Supported Living</option><option>Other - identify in notes</option></select><span class="help">Select who we bill for services. Supported living is NOT eXPRS billing!</span></label>
+<label class="fld"><span class="lbl">Any Additional Information</span><textarea class="in" rows="5" placeholder="Write here..." style="height: auto; padding-top: 12px; resize: vertical"></textarea></label>
+</div>
+</details>
+
+<div style="display: flex">
+<button type="submit" style="width: 100%; background: #0B7A37; color: #FFFFFF; border: 0; font: inherit; font-weight: 800; font-size: 16px; padding: 16px 40px; border-radius: 999px; cursor: pointer">Submit</button>
+</div>
+
+</form>
+</div>
+</section>
+
+<footer style="background: #0A3823; color: #E4EFE6; padding: 40px 16px 24px; display: flex; flex-direction: column; gap: 28px; font-size: 16px">
+<img src="/_blob/fe3f40519533c07014e3bce0c46916cd" alt="BrigaCare" style="height: 48px; width: auto; align-self: flex-start">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0 0 6px; font-size: 17px; color: #FFFFFF">Quick links</h3>
+<a href="Mobile-Home.dc.html" style="color: #E4EFE6; text-decoration: none; padding: 8px 0">Home</a>
+<a href="Mobile-ODDS.dc.html" style="color: #B5E07A; text-decoration: none; padding: 8px 0">ODDS Client Referral Form</a>
+<a href="APD-Referral.dc.html" style="color: #E4EFE6; text-decoration: none; padding: 8px 0">APD Client Referral Form</a>
+<a href="Work.dc.html" style="color: #E4EFE6; text-decoration: none; padding: 8px 0">Work with BrigaCare</a>
+<a href="Contact.dc.html" style="color: #E4EFE6; text-decoration: none; padding: 8px 0">Contact</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0 0 6px; font-size: 17px; color: #FFFFFF">Contact info</h3>
+<a href="tel:5038400387" style="color: #E4EFE6; text-decoration: none">503-840-0387</a>
+<span>503-925-3023 FAX</span>
+<span style="line-height: 1.5">20577 SW Duckridge Pl<br>Sherwood, OR 97140</span>
+</div>
+<div style="border-top: 1px solid #1F5239; padding-top: 18px; font-size: 13px; color: #C3D6C8">© Copyright {{year}} © Brigacare, Inc.</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":3900}}'>
+class Component extends DCLogic {
+renderVals() { return { year: new Date().getFullYear() }; }
+}
+</script>
+</body>
+</html>
