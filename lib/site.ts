@@ -21,6 +21,9 @@ export const CONTACT = {
   email: "cecilia.t@brigacare.com",
 };
 
+/** TODO: LinkedIn URL not supplied yet. Set it to show the LinkedIn card on the Contact page. */
+export const LINKEDIN_URL: string | null = null;
+
 /** SmartSuite public forms embedded on the site (iframes). */
 export const FORMS = {
   // Writes to Brigacare Platform 2026 → Bullpen
