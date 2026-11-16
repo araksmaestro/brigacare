@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SC/PA Case Manager Picker</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&amp;family=Nunito+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B7A37}a:hover{color:#075C29}
+.row{position:relative;display:grid;grid-template-columns:28px 1.2fr 1.5fr 1fr;gap:16px;align-items:center;padding:16px 20px;border:1.5px solid #ECE6D3;border-radius:14px;background:#FFFFFF;cursor:pointer}
+.row:hover{border-color:#B9C9B0;background:#FBFDF7}
+.row input{position:absolute;opacity:0;width:1px;height:1px}
+.dot{width:20px;height:20px;border-radius:50%;border:2px solid #9AA59E;box-sizing:border-box;background:#FFFFFF}
+.row input:checked ~ .dot{border:6px solid #0B7A37}
+.row:has(input:checked){border-color:#0B7A37;background:#F3F9EC}
+.row input:focus-visible ~ .dot{box-shadow:0 0 0 4px rgba(11,122,55,.25)}
+.nm{display:flex;flex-direction:column;gap:4px;min-width:0}
+.cell{font-size:14px;color:#43524A;overflow-wrap:anywhere}
+.none{color:#9AA59E}
+.tag{align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.06em;color:#2F5F14;background:#E6F2DA;padding:2px 8px;border-radius:999px}
+.hd{display:grid;grid-template-columns:28px 1.2fr 1.5fr 1fr;gap:16px;padding:0 22px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#5A6960}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; box-sizing: border-box; background: rgba(10,56,35,.55); display: flex; align-items: center; justify-content: center; font-family: 'Nunito Sans', system-ui, sans-serif; color: #17251C">
+<div role="dialog" aria-modal="true" aria-labelledby="pk-title" style="width: 880px; max-height: 780px; background: #FBFAF3; border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,.3); display: flex; flex-direction: column; overflow: hidden">
+
+<div style="padding: 26px 28px 18px; display: flex; flex-direction: column; gap: 18px; border-bottom: 1px solid #ECE6D3; background: #FFFFFF">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 id="pk-title" style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 26px; color: #0A3823">Link SC/PA or Case Manager</h2>
+<span style="font-size: 14px; color: #5A6960">Not in the list? Choose <strong>001 I'm not listed</strong>.</span>
+</div>
+<a href="ODDS-Referral.dc.html" aria-label="Close" style="text-decoration: none; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #F0EBDB; color: #17251C; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+</a>
+</div>
+<label style="display: flex; align-items: center; gap: 12px; height: 52px; padding: 0 16px; border: 1.5px solid #0B7A37; border-radius: 14px; background: #FFFFFF; box-shadow: 0 0 0 4px rgba(11,122,55,.12)">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5A6960" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+<input type="search" placeholder="Search by name, email or phone" aria-label="Find an existing record" style="flex: 1; border: 0; outline: none; font: inherit; font-size: 16px; background: transparent; color: #17251C">
+</label>
+</div>
+
+<div class="hd" style="padding-top: 16px; padding-bottom: 8px"><span></span><span>SC full name</span><span>SC email</span><span>SC phone</span></div>
+
+<div role="radiogroup" aria-label="Case managers" style="flex: 1; overflow: auto; padding: 4px 28px 20px; display: flex; flex-direction: column; gap: 10px">
+<label class="row"><input type="radio" name="sc"><span class="dot" aria-hidden="true"></span><span class="nm"><strong style="font-size: 15px">001 I'm not listed</strong><span class="tag">DDS</span></span><span class="cell none">Not provided</span><span class="cell none">Not provided</span></label>
+<label class="row"><input type="radio" name="sc" checked><span class="dot" aria-hidden="true"></span><span class="nm"><strong style="font-size: 15px">Aaron Ziegemeier</strong><span class="tag">DDS</span></span><span class="cell">aaron.ziegemeier@multco.us</span><span class="cell">+1 971 349 0901</span></label>
+<label class="row"><input type="radio" name="sc"><span class="dot" aria-hidden="true"></span><span class="nm"><strong style="font-size: 15px">Abby Hinojosa-Vejar</strong><span class="tag">DDS</span></span><span class="cell">abby.hinojosa-vejar@multco.us</span><span class="cell">+1 503 988 9849</span></label>
+<label class="row"><input type="radio" name="sc"><span class="dot" aria-hidden="true"></span><span class="nm"><strong style="font-size: 15px">Abby Hinojosa-Vejar</strong><span class="tag">DDS</span></span><span class="cell">abby.hinojosa-vejar@multco.us</span><span class="cell none">Not provided</span></label>
+<label class="row"><input type="radio" name="sc"><span class="dot" aria-hidden="true"></span><span class="nm"><strong style="font-size: 15px">Abduljabar Jillo</strong><span class="tag">DDS</span></span><span class="cell">abduljabar.jillo@multco.us</span><span class="cell">+1 503 319 8486</span></label>
+</div>
+
+<div style="padding: 18px 28px; border-top: 1px solid #ECE6D3; background: #FFFFFF; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<span style="font-size: 14px; color: #43524A"><strong style="color: #0A3823">1 selected:</strong> Aaron Ziegemeier</span>
+<div style="display: flex; gap: 12px">
+<a href="ODDS-Referral.dc.html" style="text-decoration: none; display: inline-flex; align-items: center; box-sizing: border-box; height: 48px; padding: 0 22px; border-radius: 999px; border: 2px solid #D9D3C0; background: #FFFFFF; font: inherit; font-weight: 800; font-size: 15px; color: #17251C; cursor: pointer">Cancel</a>
+<a href="ODDS-Referral.dc.html" style="text-decoration: none; display: inline-flex; align-items: center; box-sizing: border-box; height: 48px; padding: 0 26px; border-radius: 999px; border: 0; background: #0B7A37; font: inherit; font-weight: 800; font-size: 15px; color: #FFFFFF; cursor: pointer">Link record</a>
+</div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
