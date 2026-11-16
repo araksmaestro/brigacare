@@ -19,7 +19,12 @@ export default function WorkPage() {
           </p>
         </div>
       </section>
-      <FormEmbed src={FORMS.work} title="BrigaCare employment application" height={1100} mobileHeight={1140} />
+      <FormEmbed
+        id="work"
+        src={FORMS.work}
+        title="BrigaCare employment application"
+        heights={[{ height: 1060 }, { maxWidth: 413, height: 1090 }]}
+      />
     </>
   );
 }

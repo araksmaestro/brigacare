@@ -659,8 +659,7 @@ a:hover {
 .form-frame {
   display: block;
   width: 100%;
-  height: var(--frame-h);
-  border: 0;
+  border: 0; /* height set per form by FormEmbed */
 }
 .form-fallback {
   max-width: 900px;
@@ -1063,9 +1062,6 @@ textarea.in {
   }
   .form-card {
     border-radius: 18px;
-  }
-  .form-frame {
-    height: var(--frame-h-mobile, var(--frame-h));
   }
   .fsec {
     border-radius: 18px;

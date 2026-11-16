@@ -1,26 +1,38 @@
-import type { CSSProperties } from "react";
+/**
+ * Iframe height rules. SmartSuite doesn't report its height, so each form's content height was
+ * measured at several widths (it grows as the screen narrows). `maxWidth` is the viewport width
+ * (px) up to which `height` applies; the rule without `maxWidth` is the default for wider screens.
+ */
+export type FrameHeight = { maxWidth?: number; height: number };
 
 type Props = {
+  /** Short unique id, used to scope the height rules. */
+  id: string;
   src: string;
   title: string;
-  /** Iframe height on desktop/tablet, in px. SmartSuite does not report its height, so this is fixed. */
-  height: number;
-  /** Iframe height under 700px wide, in px. */
-  mobileHeight: number;
+  heights: FrameHeight[];
 };
 
-/** Embeds a SmartSuite public form inside the design's white form card. */
-export default function FormEmbed({ src, title, height, mobileHeight }: Props) {
-  const style = {
-    "--frame-h": `${height}px`,
-    "--frame-h-mobile": `${mobileHeight}px`,
-  } as CSSProperties;
+function heightCss(id: string, heights: FrameHeight[]) {
+  const sel = `.form-frame-${id}`;
+  const base = heights.find((h) => h.maxWidth === undefined);
+  const ranges = heights
+    .filter((h): h is Required<FrameHeight> => h.maxWidth !== undefined)
+    .sort((a, b) => b.maxWidth - a.maxWidth); // widest first, so narrower rules win
+  return [
+    base ? `${sel}{height:${base.height}px}` : "",
+    ...ranges.map((h) => `@media (max-width:${h.maxWidth}px){${sel}{height:${h.height}px}}`),
+  ].join("");
+}
 
+/** Embeds a SmartSuite public form under the page title. */
+export default function FormEmbed({ id, src, title, heights }: Props) {
   return (
     <section className="form-section">
+      <style>{heightCss(id, heights)}</style>
       <div className="wrap">
         <div className="form-card">
-          <iframe className="form-frame" src={src} title={title} style={style} />
+          <iframe className={`form-frame form-frame-${id}`} src={src} title={title} />
         </div>
         <p className="form-fallback">
           Trouble viewing the form?{" "}

@@ -22,8 +22,20 @@ export default function OddsReferralPage() {
           </span>
         </div>
       </section>
-      {/* Height covers the form with Guardian/Residential closed; opening them scrolls inside the frame. */}
-      <FormEmbed src={FORMS.odds} title="ODDS Client Referral Form" height={2450} mobileHeight={2620} />
+      {/* Heights cover the form with Guardian/Residential closed; opening them scrolls inside the frame. */}
+      <FormEmbed
+        id="odds"
+        src={FORMS.odds}
+        title="ODDS Client Referral Form"
+        heights={[
+          { height: 2370 },
+          { maxWidth: 700, height: 2390 },
+          { maxWidth: 531, height: 2490 },
+          { maxWidth: 413, height: 2530 },
+          { maxWidth: 389, height: 2555 },
+          { maxWidth: 359, height: 2765 },
+        ]}
+      />
     </>
   );
 }

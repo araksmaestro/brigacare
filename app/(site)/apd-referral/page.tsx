@@ -16,7 +16,16 @@ export default function ApdReferralPage() {
           <span className="page-subtitle">Oregon APD Submission Form</span>
         </div>
       </section>
-      <FormEmbed src={FORMS.apd} title="APD Client Referral Form" height={920} mobileHeight={920} />
+      <FormEmbed
+        id="apd"
+        src={FORMS.apd}
+        title="APD Client Referral Form"
+        heights={[
+          { height: 855 },
+          { maxWidth: 531, height: 905 },
+          { maxWidth: 359, height: 955 },
+        ]}
+      />
     </>
   );
 }
