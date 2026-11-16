@@ -167,6 +167,7 @@ a:hover {
   align-items: center;
 }
 .navlink {
+  white-space: nowrap;
   color: var(--ink);
   text-decoration: none;
   font-weight: 700;
@@ -178,6 +179,7 @@ a:hover {
   color: var(--green-600);
 }
 .nav-cta {
+  white-space: nowrap;
   background: var(--green-600);
   color: var(--white);
   text-decoration: none;
@@ -697,33 +699,37 @@ a:hover {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
+/* Cards size to their content (so the email stays on one line) and share any leftover width. */
+.ccards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.ccards > .ccard {
+  flex: 1 1 auto;
+}
+.ccards .cval {
+  white-space: nowrap;
+}
 .ccard {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 18px;
-  border: 1.5px solid var(--line);
-  border-radius: 16px;
-  background: #fdfcf8;
+  min-height: 44px;
   text-decoration: none;
   color: var(--ink);
   min-width: 0;
 }
-.ccard:hover {
-  border-color: var(--green-600);
-  background: #f3f9ec;
-  color: var(--ink);
+a.ccard:hover {
+  color: var(--green-600);
+}
+a.ccard:hover .cval {
+  text-decoration: underline;
 }
 .cic {
   flex: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--green-50);
-  color: var(--green-ink);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  color: var(--green-600);
 }
 .ctx {
   display: flex;
@@ -733,14 +739,14 @@ a:hover {
 }
 .ckey {
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
 }
 .cval {
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   overflow-wrap: anywhere;
 }
 .contact-form {
@@ -853,13 +859,17 @@ textarea.in {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
+/* The full nav needs ~1010px on one line; below that, use the hamburger menu. */
+@media (max-width: 1080px) {
   .nav {
     display: none;
   }
   .menu-btn {
     display: flex;
   }
+}
+
+@media (max-width: 900px) {
   .site-header .wrap {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -1072,6 +1082,14 @@ textarea.in {
   }
   .btn-send {
     width: 100%;
+  }
+  .ccards {
+    flex-direction: column;
+    gap: 12px;
+  }
+  /* Very narrow phones: allow wrapping rather than overflowing the card. */
+  .ccards .cval {
+    white-space: normal;
   }
 }
 
