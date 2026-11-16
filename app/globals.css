@@ -697,6 +697,18 @@ a:hover {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
+/* Cards size to their content (so the email stays on one line) and share any leftover width. */
+.ccards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.ccards > .ccard {
+  flex: 1 1 auto;
+}
+.ccards .cval {
+  white-space: nowrap;
+}
 .ccard {
   display: flex;
   align-items: center;
@@ -1072,6 +1084,14 @@ textarea.in {
   }
   .btn-send {
     width: 100%;
+  }
+  .ccards {
+    flex-direction: column;
+    gap: 12px;
+  }
+  /* Very narrow phones: allow wrapping rather than overflowing the card. */
+  .ccards .cval {
+    white-space: normal;
   }
 }
 

@@ -25,7 +25,7 @@ export default function ContactPage() {
               <h2 className="serif">Let&apos;s Chat</h2>
             </div>
             <div className="fbody">
-              <div className="g3c">
+              <div className="ccards">
                 <ContactCard href={CONTACT.phoneHref} label="Phone" value={CONTACT.phoneDashed} icon={<PhoneIcon />} />
                 <ContactCard href={`mailto:${CONTACT.email}`} label="Email" value={CONTACT.email} icon={<MailIcon />} />
                 {/* TODO: LinkedIn URL not supplied yet; the card appears once LINKEDIN_URL is set in lib/site.ts. */}
