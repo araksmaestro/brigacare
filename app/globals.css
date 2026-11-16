@@ -167,6 +167,7 @@ a:hover {
   align-items: center;
 }
 .navlink {
+  white-space: nowrap;
   color: var(--ink);
   text-decoration: none;
   font-weight: 700;
@@ -178,6 +179,7 @@ a:hover {
   color: var(--green-600);
 }
 .nav-cta {
+  white-space: nowrap;
   background: var(--green-600);
   color: var(--white);
   text-decoration: none;
@@ -857,13 +859,17 @@ textarea.in {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
+/* The full nav needs ~1010px on one line; below that, use the hamburger menu. */
+@media (max-width: 1080px) {
   .nav {
     display: none;
   }
   .menu-btn {
     display: flex;
   }
+}
+
+@media (max-width: 900px) {
   .site-header .wrap {
     padding-top: 12px;
     padding-bottom: 12px;

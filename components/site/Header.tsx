@@ -55,7 +55,7 @@ export default function Header() {
   // Close if the viewport grows past the mobile breakpoint.
   useEffect(() => {
     if (!open) return;
-    const mq = window.matchMedia("(min-width: 901px)");
+    const mq = window.matchMedia("(min-width: 1081px)");
     const onChange = () => mq.matches && setOpen(false);
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
