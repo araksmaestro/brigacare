@@ -28,17 +28,15 @@ export default function ContactPage() {
               <div className="ccards">
                 <ContactCard href={CONTACT.phoneHref} label="Phone" value={CONTACT.phoneDashed} icon={<PhoneIcon />} />
                 <ContactCard href={`mailto:${CONTACT.email}`} label="Email" value={CONTACT.email} icon={<MailIcon />} />
-                {/* TODO: LinkedIn URL not supplied yet; the card appears once LINKEDIN_URL is set in lib/site.ts. */}
-                {LINKEDIN_URL && (
-                  <ContactCard
-                    href={LINKEDIN_URL}
-                    label="Social Media"
-                    value="LinkedIn"
-                    icon={<LinkedInIcon />}
-                    ariaLabel="BrigaCare on LinkedIn"
-                    external
-                  />
-                )}
+                {/* TODO: LinkedIn URL not supplied yet; shows as plain text until LINKEDIN_URL is set in lib/site.ts. */}
+                <ContactCard
+                  href={LINKEDIN_URL}
+                  label="Social Media"
+                  value="LinkedIn"
+                  icon={<LinkedInIcon />}
+                  ariaLabel="BrigaCare on LinkedIn"
+                  external
+                />
               </div>
               <ContactForm />
             </div>
@@ -49,21 +47,17 @@ export default function ContactPage() {
   );
 }
 
+/** A contact item; renders as plain text when there is no link yet. */
 function ContactCard(props: {
-  href: string;
+  href: string | null;
   label: string;
   value: string;
   icon: ReactNode;
   ariaLabel?: string;
   external?: boolean;
 }) {
-  return (
-    <a
-      className="ccard"
-      href={props.href}
-      aria-label={props.ariaLabel}
-      {...(props.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-    >
+  const content = (
+    <>
       <span className="cic" aria-hidden="true">
         {props.icon}
       </span>
@@ -71,13 +65,26 @@ function ContactCard(props: {
         <span className="ckey">{props.label}</span>
         <span className="cval">{props.value}</span>
       </span>
+    </>
+  );
+
+  if (!props.href) return <div className="ccard">{content}</div>;
+
+  return (
+    <a
+      className="ccard"
+      href={props.href}
+      aria-label={props.ariaLabel}
+      {...(props.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
+      {content}
     </a>
   );
 }
 
 const iconProps = {
-  width: 20,
-  height: 20,
+  width: 18,
+  height: 18,
   viewBox: "0 0 24 24",
   fill: "none",
   stroke: "currentColor",
