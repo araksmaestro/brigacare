@@ -39,9 +39,9 @@ export async function submitContact(_prev: ContactState, formData: FormData): Pr
     await sendContactMessage(msg);
     return { status: "success", message: "Thanks! Your message has been sent. We'll be in touch soon." };
   } catch (err) {
-    if (!(err instanceof ContactNotConfiguredError)) {
-      console.error("Contact form delivery failed:", err);
-    }
+    // Server log only; the visitor gets the generic message below.
+    if (err instanceof ContactNotConfiguredError) console.warn(err.message);
+    else console.error("Contact form delivery failed:", err);
     return {
       status: "error",
       message: `Sorry, we couldn't send your message online. Please call ${CONTACT.phoneDashed} or email ${CONTACT.email}.`,
