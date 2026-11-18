@@ -38,7 +38,8 @@ export type StaffGroup = "leadership" | "clinical" | "support";
 
 export type StaffMember = {
   name: string;
-  initials: string;
+  /** Degrees and licenses shown after the name, e.g. "MS, CADC I". */
+  credentials?: string;
   role: string;
   email: string;
   group: StaffGroup;
@@ -46,38 +47,37 @@ export type StaffMember = {
 
 export const FEATURED_STAFF: StaffMember = {
   name: "Cecilia Tilley",
-  initials: "CT",
   role: "CEO",
   email: "cecilia.t@brigacare.com",
   group: "leadership",
 };
 
 export const STAFF: StaffMember[] = [
-  { name: "Robert J Tilley", initials: "RT", role: "MD, MBA · Exec VP", email: "rob.t@brigacare.com", group: "leadership" },
-  { name: "Amanda Dorman", initials: "AD", role: "MS · Clinical Director", email: "amanda.d@brigacare.com", group: "leadership" },
-  { name: "Susan Savant", initials: "SS", role: "PhD · Behavior Professional", email: "susan.s@brigacare.com", group: "clinical" },
-  { name: "Angela Pickering", initials: "AP", role: "M.Ed · Behavior Professional", email: "angela.p@brigacare.com", group: "clinical" },
-  { name: "Kasey Daisher", initials: "KD", role: "BS · Behavior Professional", email: "kasey.d@brigacare.com", group: "clinical" },
-  { name: "Jamie Blackwell", initials: "JB", role: "BA · Behavior Professional", email: "jamie.b@brigacare.com", group: "clinical" },
-  { name: "Mesha Koos", initials: "MK", role: "BS · Behavior Professional", email: "mesha.k@brigacare.com", group: "clinical" },
-  { name: "Kaitlyn Herbst", initials: "KH", role: "BS · Behavior Professional", email: "kaitlyn.h@brigacare.com", group: "clinical" },
-  { name: "Michael Arthur", initials: "MA", role: "BA · Behavior Professional", email: "m.arthur@brigacare.com", group: "clinical" },
-  { name: "Kristen Davis", initials: "KD", role: "MS · Behavior Professional", email: "kristen.d@brigacare.com", group: "clinical" },
-  { name: "Grace Battle", initials: "GB", role: "Behavior Professional / OIS Instructor", email: "grace.b@brigacare.com", group: "clinical" },
-  { name: "Alexis Wright", initials: "AW", role: "BA · Behavior Professional / OIS Instructor", email: "alexis.w@brigacare.com", group: "clinical" },
-  { name: "Shannon Alfaro", initials: "SA", role: "BA · Behavior Professional", email: "shannon.a@brigacare.com", group: "clinical" },
-  { name: "Amber Rail", initials: "AR", role: "BS · Behavior Professional", email: "amber.r@brigacare.com", group: "clinical" },
-  { name: "Melea Kellogg", initials: "MK", role: "MS · Behavior Professional", email: "melea.k@brigacare.com", group: "clinical" },
-  { name: "Jacob Pscheidt", initials: "JP", role: "BS · Behavior Professional", email: "jacob.p@brigacare.com", group: "clinical" },
-  { name: "Christine Rodriguez", initials: "CR", role: "MSW · Behavior Professional", email: "christine.r@brigacare.com", group: "clinical" },
-  { name: "Courtney Slater", initials: "CS", role: "MS, CADC I, QMHP · Behavior Professional", email: "courtney.s@brigacare.com", group: "clinical" },
-  { name: "Brian Prusynski", initials: "BP", role: "BA · Behavior Professional", email: "brian.p@brigacare.com", group: "clinical" },
-  { name: "Haley Holte", initials: "HH", role: "MS · Behavior Professional", email: "haley.h@brigacare.com", group: "clinical" },
-  { name: "Misha Micheau", initials: "MM", role: "M.Ed · Behavior Professional", email: "misha.m@brigacare.com", group: "clinical" },
-  { name: "Yeliz Boynukisa-Pleasant", initials: "YB", role: "M.Ed · Behavior Professional", email: "yeliz.b@brigacare.com", group: "clinical" },
-  { name: "Victoria Steelman", initials: "VS", role: "MA · Behavior Professional", email: "victoria.b@brigacare.com", group: "clinical" },
-  { name: "Aaron Vice", initials: "AV", role: "BS · OIS Instructor", email: "aaron.v@brigacare.com", group: "clinical" },
-  { name: "Megan Klein", initials: "MK", role: "Billing Specialist", email: "megan.k@brigacare.com", group: "support" },
-  { name: "Reanna Todd", initials: "RT", role: "Billing Specialist", email: "reanna.t@brigacare.com", group: "support" },
-  { name: "Edelyn Murillo", initials: "EM", role: "Care Coordinator", email: "edelyn.m@brigacare.com", group: "support" },
+  { name: "Robert J Tilley", credentials: "MD, MBA", role: "Exec VP", email: "rob.t@brigacare.com", group: "leadership" },
+  { name: "Amanda Dorman", credentials: "MS", role: "Clinical Director", email: "amanda.d@brigacare.com", group: "leadership" },
+  { name: "Susan Savant", credentials: "PhD", role: "Behavior Professional", email: "susan.s@brigacare.com", group: "clinical" },
+  { name: "Angela Pickering", credentials: "M.Ed", role: "Behavior Professional", email: "angela.p@brigacare.com", group: "clinical" },
+  { name: "Kasey Daisher", credentials: "BS", role: "Behavior Professional", email: "kasey.d@brigacare.com", group: "clinical" },
+  { name: "Jamie Blackwell", credentials: "BA", role: "Behavior Professional", email: "jamie.b@brigacare.com", group: "clinical" },
+  { name: "Mesha Koos", credentials: "BS", role: "Behavior Professional", email: "mesha.k@brigacare.com", group: "clinical" },
+  { name: "Kaitlyn Herbst", credentials: "BS", role: "Behavior Professional", email: "kaitlyn.h@brigacare.com", group: "clinical" },
+  { name: "Michael Arthur", credentials: "BA", role: "Behavior Professional", email: "m.arthur@brigacare.com", group: "clinical" },
+  { name: "Kristen Davis", credentials: "MS", role: "Behavior Professional", email: "kristen.d@brigacare.com", group: "clinical" },
+  { name: "Grace Battle", role: "Behavior Professional / OIS Instructor", email: "grace.b@brigacare.com", group: "clinical" },
+  { name: "Alexis Wright", credentials: "BA", role: "Behavior Professional / OIS Instructor", email: "alexis.w@brigacare.com", group: "clinical" },
+  { name: "Shannon Alfaro", credentials: "BA", role: "Behavior Professional", email: "shannon.a@brigacare.com", group: "clinical" },
+  { name: "Amber Rail", credentials: "BS", role: "Behavior Professional", email: "amber.r@brigacare.com", group: "clinical" },
+  { name: "Melea Kellogg", credentials: "MS", role: "Behavior Professional", email: "melea.k@brigacare.com", group: "clinical" },
+  { name: "Jacob Pscheidt", credentials: "BS", role: "Behavior Professional", email: "jacob.p@brigacare.com", group: "clinical" },
+  { name: "Christine Rodriguez", credentials: "MSW", role: "Behavior Professional", email: "christine.r@brigacare.com", group: "clinical" },
+  { name: "Courtney Slater", credentials: "MS, CADC I, QMHP", role: "Behavior Professional", email: "courtney.s@brigacare.com", group: "clinical" },
+  { name: "Brian Prusynski", credentials: "BA", role: "Behavior Professional", email: "brian.p@brigacare.com", group: "clinical" },
+  { name: "Haley Holte", credentials: "MS", role: "Behavior Professional", email: "haley.h@brigacare.com", group: "clinical" },
+  { name: "Misha Micheau", credentials: "M.Ed", role: "Behavior Professional", email: "misha.m@brigacare.com", group: "clinical" },
+  { name: "Yeliz Boynukisa-Pleasant", credentials: "M.Ed", role: "Behavior Professional", email: "yeliz.b@brigacare.com", group: "clinical" },
+  { name: "Victoria Steelman", credentials: "MA", role: "Behavior Professional", email: "victoria.b@brigacare.com", group: "clinical" },
+  { name: "Aaron Vice", credentials: "BS", role: "OIS Instructor", email: "aaron.v@brigacare.com", group: "clinical" },
+  { name: "Megan Klein", role: "Billing Specialist", email: "megan.k@brigacare.com", group: "support" },
+  { name: "Reanna Todd", role: "Billing Specialist", email: "reanna.t@brigacare.com", group: "support" },
+  { name: "Edelyn Murillo", role: "Care Coordinator", email: "edelyn.m@brigacare.com", group: "support" },
 ];

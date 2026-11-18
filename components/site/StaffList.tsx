@@ -13,15 +13,15 @@ export default function StaffList({ staff, total }: { staff: StaffMember[]; tota
     <>
       <ul id="staff-list" className={`staff${expanded ? " expanded" : ""}`}>
         {staff.map((p, i) => (
-          <li key={p.email} className={`card${i >= PHONE_PREVIEW ? " staff-extra" : ""}`}>
-            <span className={`avatar avatar-${p.group}`} aria-hidden="true">
-              {p.initials}
-            </span>
-            <span className="person">
+          <li key={p.email} className={`card card-${p.group}${i >= PHONE_PREVIEW ? " staff-extra" : ""}`}>
+            <div className="card-band">
               <strong>{p.name}</strong>
+              {p.credentials && <span className="cred">, {p.credentials}</span>}
+            </div>
+            <div className="card-body">
               <span className="role">{p.role}</span>
               <a href={`mailto:${p.email}`}>{p.email}</a>
-            </span>
+            </div>
           </li>
         ))}
       </ul>
