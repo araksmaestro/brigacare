@@ -44,14 +44,11 @@ export default function HomePage() {
               Our Staff.
             </h2>
             <div className="featured">
-              <span className="avatar" aria-hidden="true">
-                {FEATURED_STAFF.initials}
-              </span>
-              <span className="person">
+              <span className="featured-name">
                 <strong>{FEATURED_STAFF.name}</strong>
-                <span className="role">{FEATURED_STAFF.role}</span>
-                <a href={`mailto:${FEATURED_STAFF.email}`}>{FEATURED_STAFF.email}</a>
+                <span className="title-pill">{FEATURED_STAFF.role}</span>
               </span>
+              <a href={`mailto:${FEATURED_STAFF.email}`}>{FEATURED_STAFF.email}</a>
             </div>
           </div>
           <StaffList staff={STAFF} total={STAFF.length + 1} />
